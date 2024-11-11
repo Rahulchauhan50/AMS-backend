@@ -1,0 +1,81 @@
+_id,item_description.Description,item_description.ID_Tag,item_description.Asset_Name,item_description.Category,Purchase_Information.Date,Purchase_Information.Supplier,Purchase_Information.warranty_Expire,Purchase_Information.Price,Quantity_and_value.Condition,Quantity_and_value.Unit_value,Quantity_and_value.Qyt,Quantity_and_value.value,Items_Details.Serial_No,Items_Details.Model_No,Items_Details.AMC,Location.Room,Location.Dept_area,assetImage,__v
+664f27dec9a8b0f95afe9cf7,sdfsf,sdfsd,sdfsdf,Electronics,2024-05-17T00:00:00.000Z,sdfsdf,2024-05-14T00:00:00.000Z,3423,Excellent,234234,23423,234233,234,234,234,234234,234234,http://localhost:5000/uploads/Assetimages/1716463582833Welcome Scan.jpg,0
+664f2a13f87fbdec72a417f3,dfggdfg,,dfgdfg,TV/Monitors,,,,,Good,,2,,,,,sdf,sdfs,,0
+,8.75 TR Ductable Water Cool Package,,Air Conditioner - Blue Star,Electronics,2017,Blue Star,,,Running (Service in March month),,1,,,,AMC (1st-May-2024 to 2025),HR Cabin,,,
+,5.5 TR Ductable Water Cool Package,,Air Conditioner - Blue Star,Electronics,2017,Blue Star,,,Running,,1,,,,AMC (1st-May-2024 to 2025),Admin Cabin,,,
+,11.0 TR Ductable Water Cool Package AC,,Air Conditioner - Blue Star,Electronics,2017,Blue Star,,,Running,,1,,,,AMC (1st-May-2024 to 2025),Media Room,,,
+,11.0 TR Ductable Water Cool Package AC,,Air Conditioner - Blue Star,Electronics,2017,Blue Star,,,Running,,1,,,,AMC (1st-May-2024 to 2025),Board Room,,,
+,11.0 TR Ductable Water Cool Package AC,,Air Conditioner - Blue Star,Electronics,2017,Blue Star,,,Need to Service,,1,,,,AMC (1st-May-2024 to 2025),Pantry Area,,,
+,Ductable Water Cool Package,,Air Conditioner - Blue Star,Electronics,2017,Blue Star,,,Running (Service in March month),,5,,,,AMC (1st-May-2024 to 2025),.,,,
+,"Reception - 3 Table (2 conference Room & 3 in Reception Hall)
+Admin Cabin - 3 Table
+BTL ops Cabin - 2 Table
+HR Cabin - 3 Table
+Ajay Sir Cabin - 1 Table
+CEO - 1 Table
+Tarun Sir Cabin - 1 Table
+Opp. Management Cabin Hall - 7
+Media Room - 3 
+Opp. Media Room - 3
+Board Room - 2
+Opp. Board Room Hall - 20
+Hall A side - 24
+Hall B Side - 24
+COO Cabin - 1 
+Creative Cabin - 2
+Video Room - 2 Table
+Pantry - 7
+Halll B Side",,Table,Electronics,,,,,,,108,,,,,.,,,
+,,,,Electronics,,,,,,,,,,,,.,,,
+,"Reception - 3
+Meeting Room 1 - 4
+Meeting Room 2 - 4
+Admin - 2
+HR Cabin - 3
+Harshita - 1
+Opposite Mangement Cabin - 5
+Media room - 2
+Opposite media Room - 1
+Board Room - 11
+Hall A Side - 10
+Hall B Side - 17
+Oppostire Board Room - 13
+Pantry - 28
+COO - 3
+Mangement - 3",,Chair,Electronics,,,,,,,"
+For Staff - 51
+Total = 110",,,,,.,,,
+,5,,Repariable Chair,Electronics,,,,,,,5,,,,,.,,,
+,"Hall - 7
+Creative - 2",,Ceiling Fan,Electronics,,,,,,,9,,,,,.,,,
+,"COO - 1
+Pantry - 1",,Table Fan,Electronics,,,,,,,2,,,,,.,,,
+,"Creative - 1
+Pantry - 1",,Exhast Fan,Electronics,,,,,,,2,,,,,.,,,
+,Admin - 1,,Wall Fan,Electronics,,,,,,,1,,,,,.,,,
+,Admin - 1,,Amplifer,Electronics,,,,,,,1,,,,,.,,,
+,Boss Speaker in Board Room - 1,,Speaker,Electronics,,,,,,,1,,,,,.,,,
+,"Reception - 1
+Board Room - 1",,TV,Electronics,,,,,,,2,,,,,.,,,
+,"
+Admin - 1",,TV,Electronics,09-May-24,Reliance,,,,,1,,,,,Admin,,,
+,1,,Acquarium,Electronics,,,,,,,,,,,,.,,,
+,20,,Almirah,Electronics,,,,,,,20,,,,,.,,,
+,1,,Locker,Electronics,,,,,,,1,,,,,.,,,
+,Pantry - 1 (Whirlpool),,Fridge,Electronics,,,,,,,1,,,,,.,,,
+,Samsung,,Microway,Electronics,,,,,,,1,,,,,.,,,
+,,,RO,Electronics,,,,,,,1,,,,,.,,,
+,,,Watercooler,Electronics,,,,,,,1,,,,,.,,,
+,"1 - Working
+1 - Dead",,Induction,Electronics,,,,,,,2,,,,,.,,,
+,Milesight - 6,,Camera,Electronics,,,,,,,6,,,,,.,,,
+,Genesis - 5,,Camera,Electronics,,,,,,,1,,,,,.,,,
+,Milesight,,NVR,Electronics,,,,,,,1,,,,,.,,,
+,Standalone 16 Channel NVR,,NVR,Electronics,,,,,,,1,,,,,.,,,
+,"UPS - 1
+Battery - 15",,UPS,Electronics,,,,,,,1,,,,,.,,,
+,"Inverter - 1
+Battery - 2",,Inverter,Electronics,,,,,,,1,,,,,.,,,
+,Ben Q,,Projector,Electronics,,,,,,,1,,,,,.,,,
+,.,,Camera,Electronics,,,,,,,1,,,,,.,,,
+,.,,Light,Electronics,,,,,,,1,,,,,.,,,
