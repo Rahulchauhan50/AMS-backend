@@ -276,6 +276,97 @@ router.get('/get-asset', async (req, res) => {
 });
 
 
+router.get('/get-condition', async (req, res) => {
+    try {
+        const allAssets = await Asset.find(); // Retrieve all users from the database
+        let one = 0; two = 0; three = 0; four= 0; five= 0
+        // console.log(typeof )
+
+        allAssets.map((asset)=>{
+            switch(Number(asset.Quantity_and_value.Condition)){
+                case 1:
+                    one = one+1
+                    break;
+                case 2:
+                    two = two+1
+                    break;
+                case 3:
+                    three = three+1
+                    break;
+                case 4:
+                    four = four+1
+                    break;
+                case 5:
+                    five = five+1
+                    break;
+                default:
+            }
+
+        })
+        res.status(200).send({one, two, three, four, five}); // Send the list of users as the response
+    } catch (error) {
+        res.status(500).send({ error: 'Internal Server Error' }); // Handle any errors that occur
+    }
+
+});
+router.get('/get-value', async (req, res) => {
+    try {
+        const allAssets = await Asset.find(); 
+        let Creative = 0;
+        let CS = 0;
+        let Sales = 0;
+        let Finance = 0;
+        let HR = 0;
+        let It = 0;
+        let Admin = 0;
+        let Digital = 0;
+        let Management = 0;
+        let other = 0;
+       
+        allAssets.map((asset)=>{
+            switch(asset.Location.Dept_area){
+                case "Creative":
+                    Creative = Creative+asset.Purchase_Information.Price
+                    break;
+                case "CS":
+                    CS = Creative+asset.Purchase_Information.Price
+                    break;
+                case "Sales":
+                    Sales = Creative+asset.Purchase_Information.Price
+                    break;
+                case "Finance":
+                    Finance = Creative+asset.Purchase_Information.Price
+                    break;
+                case "HR":
+                    HR = Creative+asset.Purchase_Information.Price
+                    break;
+                case "It":
+                    It = Creative+asset.Purchase_Information.Price
+                    break;
+                case "Admin":
+                    Admin = Creative+asset.Purchase_Information.Price
+                    break;
+                case "Digital":
+                    Digital = Creative+asset.Purchase_Information.Price
+                    break;
+                case "Management":
+                    Management = Creative+asset.Purchase_Information.Price
+                    break;
+                case "other":
+                    other = Creative+asset.Purchase_Information.Price
+                    break;
+                default:
+            }
+
+        })
+        res.status(200).send({Creative,CS,Sales,Finance,HR,It,Admin,Digital,Management,other}); // Send the list of users as the response
+    } catch (error) {
+        res.status(500).send({ error: 'Internal Server Error' }); // Handle any errors that occur
+    }
+
+});
+
+
 router.get('/get-users', async (req, res) => {
     try {
         const users = await PortalUser.find(); // Retrieve all users from the database
