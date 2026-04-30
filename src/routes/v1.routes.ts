@@ -7,6 +7,7 @@ import accessControlRoutes from '../modules/access-control/access-control.routes
 import auditLogRoutes from '../modules/audit-logs/audit-log.routes';
 import assetCategoryRoutes from '../modules/asset-categories/asset-category.routes';
 import assetStatusRoutes from '../modules/asset-statuses/asset-status.routes';
+import locationRoutes from '../modules/locations/location.routes';
 
 const router = Router();
 
@@ -43,5 +44,8 @@ router.use('/asset-categories', assetCategoryRoutes);
 
 // Phase 08: Asset status management
 router.use('/asset-statuses', assetStatusRoutes);
+
+// Phase 09: Location management
+router.use('/locations', locationRoutes);
 
 export default router;
