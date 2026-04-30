@@ -1,0 +1,55 @@
+import { Schema, model, Document } from 'mongoose';
+import { baseSchemaFields, baseSchemaOptions } from '../../common/schemas/base.schema';
+
+export interface IUser extends Document {
+  name: string;
+  email: string;
+  passwordHash: string;
+  status: 'active' | 'inactive';
+  roles: string[];
+  isDeleted: boolean;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+const userSchema = new Schema<IUser>(
+  {
+    name: {
+      type: String,
+      required: [true, 'Name is required'],
+      trim: true,
+    },
+    email: {
+      type: String,
+      required: [true, 'Email is required'],
+      unique: true,
+      trim: true,
+      lowercase: true,
+    },
+    passwordHash: {
+      type: String,
+      required: [true, 'Password is required'],
+    },
+    status: {
+      type: String,
+      enum: ['active', 'inactive'],
+      default: 'active',
+    },
+    roles: {
+      type: [String],
+      default: ['IT Supervisor'], // Default role
+    },
+    ...baseSchemaFields,
+  },
+  baseSchemaOptions
+);
+
+// Remove passwordHash from JSON responses
+userSchema.set('toJSON', {
+  transform: (doc, ret: any) => {
+    delete ret.passwordHash;
+    return ret;
+  },
+});
+
+export const User = model<IUser>('User', userSchema);
