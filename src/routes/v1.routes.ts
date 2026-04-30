@@ -9,6 +9,7 @@ import assetCategoryRoutes from '../modules/asset-categories/asset-category.rout
 import assetStatusRoutes from '../modules/asset-statuses/asset-status.routes';
 import locationRoutes from '../modules/locations/location.routes';
 import roomRoutes from '../modules/rooms/room.routes';
+import employeeRoutes from '../modules/employees/employee.routes';
 
 const router = Router();
 
@@ -51,5 +52,8 @@ router.use('/locations', locationRoutes);
 
 // Phase 10: Room management
 router.use('/rooms', roomRoutes);
+
+// Phase 11: Employee listing and HRMS placeholder
+router.use('/employees', employeeRoutes);
 
 export default router;
