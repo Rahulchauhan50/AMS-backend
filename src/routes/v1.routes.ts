@@ -8,6 +8,7 @@ import auditLogRoutes from '../modules/audit-logs/audit-log.routes';
 import assetCategoryRoutes from '../modules/asset-categories/asset-category.routes';
 import assetStatusRoutes from '../modules/asset-statuses/asset-status.routes';
 import locationRoutes from '../modules/locations/location.routes';
+import roomRoutes from '../modules/rooms/room.routes';
 
 const router = Router();
 
@@ -47,5 +48,8 @@ router.use('/asset-statuses', assetStatusRoutes);
 
 // Phase 09: Location management
 router.use('/locations', locationRoutes);
+
+// Phase 10: Room management
+router.use('/rooms', roomRoutes);
 
 export default router;
