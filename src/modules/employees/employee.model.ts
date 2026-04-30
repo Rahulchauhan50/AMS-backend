@@ -24,7 +24,6 @@ const employeeSchema = new Schema<IEmployee>(
     employeeId: {
       type: String,
       required: [true, 'Employee ID is required'],
-      unique: true,
       trim: true,
     },
     name: {

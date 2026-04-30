@@ -2,6 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 import { errorResponse, successResponse } from '../../common/response/response.formatter';
 import { LocationService } from './location.service';
 import { AuditLogService } from '../audit-logs/audit-log.service';
+import { AssetService } from '../assets/asset.service';
 
 const validationError = (field: string, message: string) => [{ field, message }];
 
@@ -154,6 +155,31 @@ export class LocationController {
       });
 
       return res.status(200).json(successResponse('Location deleted successfully', location));
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  static async getLocationAssets(req: Request, res: Response, next: NextFunction) {
+    try {
+      const location = await LocationService.getLocationById(String(req.params.id));
+      if (!location) {
+        return res.status(404).json(errorResponse('Location not found'));
+      }
+
+      const page = Math.max(1, parseInt(req.query.page as string) || 1);
+      const limit = Math.min(100, parseInt(req.query.limit as string) || 20);
+      const result = await AssetService.listAssets({ locationId: String(req.params.id) }, page, limit, 'updatedAt', 'desc');
+
+      return res.status(200).json(
+        successResponse('Location assets retrieved successfully', result.assets, {
+          locationId: req.params.id,
+          total: result.total,
+          page,
+          limit,
+          totalPages: Math.max(1, Math.ceil(result.total / limit)),
+        })
+      );
     } catch (error) {
       next(error);
     }

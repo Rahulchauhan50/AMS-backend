@@ -1,5 +1,7 @@
 import { Room, type IRoom } from './room.model';
 import { Location } from '../locations/location.model';
+import { Asset } from '../assets/asset.model';
+import { Assignment } from '../assignments/assignment.model';
 
 interface RoomInput {
   name: string;
@@ -126,6 +128,49 @@ export class RoomService {
     room.isDeleted = true;
     await room.save();
     return room;
+  }
+
+  static async getRoomAssetHistory(id: string, page: number = 1, limit: number = 10) {
+    const room = await this.getRoomById(id);
+
+    // Get audit logs for assets assigned/moved to this room
+    const assignments = await Assignment.find({
+      $or: [
+        { 'data.newRoomId': id },
+        { 'data.oldRoomId': id },
+      ],
+      isDeleted: false,
+    })
+      .sort({ createdAt: -1 })
+      .skip((page - 1) * limit)
+      .limit(limit);
+
+    const total = await Assignment.countDocuments({
+      $or: [
+        { 'data.newRoomId': id },
+        { 'data.oldRoomId': id },
+      ],
+      isDeleted: false,
+    });
+
+    const events = assignments.map((a: any) => ({
+      timestamp: a.createdAt,
+      assetId: a.assetId,
+      event: 'ASSET_MOVED',
+      description: 'Asset moved to/from this room',
+    }));
+
+    return {
+      events,
+      metadata: {
+        roomId: room._id,
+        roomName: room.name,
+        total,
+        page,
+        limit,
+        totalPages: Math.max(1, Math.ceil(total / limit)),
+      },
+    };
   }
 }
 

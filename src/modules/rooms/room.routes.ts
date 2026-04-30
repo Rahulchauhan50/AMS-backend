@@ -13,6 +13,12 @@ router.use(requirePermission('manage:rooms'));
 // List all rooms
 router.get('/', RoomController.listRooms);
 
+// Get assets assigned to a room
+router.get('/:id/assets', RoomController.getRoomAssets);
+
+// Get room asset history
+router.get('/:id/asset-history', RoomController.getRoomAssetHistory);
+
 // Create a new room
 router.post(
   '/',

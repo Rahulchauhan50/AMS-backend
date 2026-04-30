@@ -2,6 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 import { errorResponse, successResponse } from '../../common/response/response.formatter';
 import { RoomService } from './room.service';
 import { AuditLogService } from '../audit-logs/audit-log.service';
+import { AssetService } from '../assets/asset.service';
 
 const validationError = (field: string, message: string) => [{ field, message }];
 const VALID_ROOM_TYPES = ['meeting', 'conference', 'training', 'storage'];
@@ -165,6 +166,47 @@ export class RoomController {
         })
       );
     } catch (error) {
+      next(error);
+    }
+  }
+
+  static async getRoomAssets(req: Request, res: Response, next: NextFunction) {
+    try {
+      const page = Math.max(1, parseInt(req.query.page as string) || 1);
+      const limit = Math.min(100, parseInt(req.query.limit as string) || 10);
+
+      const { assets, total } = await AssetService.listAssetsByRoom(req.params.id as string, page, limit);
+
+      return res.status(200).json(
+        successResponse('Room assets retrieved successfully', assets, {
+          total,
+          page,
+          limit,
+          pages: Math.ceil(total / limit),
+        })
+      );
+    } catch (error: any) {
+      if (error?.statusCode === 404) {
+        return res.status(404).json(errorResponse('Room not found'));
+      }
+
+      next(error);
+    }
+  }
+
+  static async getRoomAssetHistory(req: Request, res: Response, next: NextFunction) {
+    try {
+      const page = Math.max(1, parseInt(req.query.page as string) || 1);
+      const limit = Math.min(100, parseInt(req.query.limit as string) || 10);
+
+      const history = await RoomService.getRoomAssetHistory(req.params.id as string, page, limit);
+
+      return res.status(200).json(successResponse('Room asset history retrieved successfully', history.events, history.metadata));
+    } catch (error: any) {
+      if (error?.statusCode === 404) {
+        return res.status(404).json(errorResponse('Room not found'));
+      }
+
       next(error);
     }
   }

@@ -7,9 +7,20 @@ import accessControlRoutes from '../modules/access-control/access-control.routes
 import auditLogRoutes from '../modules/audit-logs/audit-log.routes';
 import assetCategoryRoutes from '../modules/asset-categories/asset-category.routes';
 import assetStatusRoutes from '../modules/asset-statuses/asset-status.routes';
+import assetRoutes from '../modules/assets/asset.routes';
 import locationRoutes from '../modules/locations/location.routes';
 import roomRoutes from '../modules/rooms/room.routes';
 import employeeRoutes from '../modules/employees/employee.routes';
+import vendorRoutes from '../modules/vendors/vendor.routes';
+import assignmentsRoutes from '../modules/assignments/assignment.routes';
+import maintenanceRequestRoutes from '../modules/maintenance-requests/maintenance-request.routes';
+import maintenanceScheduleRoutes from '../modules/maintenance-schedules/maintenance-schedule.routes';
+import notificationRoutes from '../modules/notifications/notification.routes';
+import documentRoutes from '../modules/documents/document.routes';
+import reservationRoutes from '../modules/reservations/reservation.routes';
+import trackingRoutes from '../modules/tracking/tracking.routes';
+import financeRoutes from '../modules/finance/finance.routes';
+import contractRoutes from '../modules/contracts/contract.routes';
 
 const router = Router();
 
@@ -55,5 +66,38 @@ router.use('/rooms', roomRoutes);
 
 // Phase 11: Employee listing and HRMS placeholder
 router.use('/employees', employeeRoutes);
+
+// Phase 12: Vendor and supplier base
+router.use('/vendors', vendorRoutes);
+
+// Phase 13: Core asset inventory model
+router.use('/assets', assetRoutes);
+
+// Phase 18: Assignment endpoints
+router.use('/assignments', assignmentsRoutes);
+
+// Phase 22: Maintenance request management
+router.use('/maintenance-requests', maintenanceRequestRoutes);
+
+// Phase 23: Preventive maintenance scheduling
+router.use('/maintenance-schedules', maintenanceScheduleRoutes);
+
+// Phase 25: Alerts and notification engine
+router.use('/notifications', notificationRoutes);
+
+// Phase 26: Document management
+router.use('/documents', documentRoutes);
+
+// Phase 27: Reservation and booking management
+router.use('/reservations', reservationRoutes);
+
+// Phase 28: Asset tracking and location monitoring
+router.use('/tracking', trackingRoutes);
+
+// Phase 29: Depreciation and financial management
+router.use('/finance', financeRoutes);
+
+// Phase 30: Contract management
+router.use('/contracts', contractRoutes);
 
 export default router;

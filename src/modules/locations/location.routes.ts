@@ -6,6 +6,7 @@ import { captureAuditContext } from '../../middlewares/audit.middleware';
 const router = Router();
 
 router.get('/', protect, requirePermission('manage:locations'), LocationController.listLocations);
+router.get('/:id/assets', protect, requirePermission('manage:locations'), LocationController.getLocationAssets);
 router.post(
   '/',
   protect,

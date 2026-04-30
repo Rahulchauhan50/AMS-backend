@@ -1,4 +1,5 @@
 import { Employee, type IEmployee, type EmployeeStatus } from './employee.model';
+import { Assignment } from '../assignments/assignment.model';
 
 interface EmployeeInput {
   employeeId: string;
@@ -210,12 +211,30 @@ export class EmployeeService {
   // Placeholder for employee history
   static async getEmployeeHistory(employeeId: string, page: number = 1, limit: number = 10) {
     const employee = await this.getEmployeeById(employeeId);
-    
-    // Placeholder - in future phases, this will fetch audit logs related to this employee
+
+    // Get all assignments for this employee
+    const assignments = await Assignment.find({ employeeId, isDeleted: false })
+      .populate(['assetId'])
+      .sort({ assignedAt: -1 })
+      .skip((page - 1) * limit)
+      .limit(limit);
+
+    const total = await Assignment.countDocuments({ employeeId, isDeleted: false });
+
+    const history = assignments.map((assignment: any) => ({
+      assignmentId: assignment._id,
+      assetId: assignment.assetId?._id?.toString?.() || assignment.assetId.toString(),
+      assetTag: assignment.assetId?.assetTag || 'Unknown',
+      assignedAt: assignment.assignedAt,
+      unassignedAt: assignment.unassignedAt || null,
+      isActive: assignment.isActive,
+      reason: assignment.reason || '',
+    }));
+
     return {
       employeeId: employee._id,
-      history: [],
-      total: 0,
+      history,
+      total,
       page,
       limit,
     };
