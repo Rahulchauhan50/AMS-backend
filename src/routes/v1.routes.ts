@@ -6,6 +6,7 @@ import userRoutes from '../modules/users/user.routes';
 import accessControlRoutes from '../modules/access-control/access-control.routes';
 import auditLogRoutes from '../modules/audit-logs/audit-log.routes';
 import assetCategoryRoutes from '../modules/asset-categories/asset-category.routes';
+import assetStatusRoutes from '../modules/asset-statuses/asset-status.routes';
 
 const router = Router();
 
@@ -39,5 +40,8 @@ router.use('/audit-logs', auditLogRoutes);
 
 // Phase 07: Asset category management
 router.use('/asset-categories', assetCategoryRoutes);
+
+// Phase 08: Asset status management
+router.use('/asset-statuses', assetStatusRoutes);
 
 export default router;
