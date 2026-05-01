@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { SecurityService } from '../security/security.service';
+import { SecurityService } from '../common/security/security.service';
 
 /**
  * Request sanitization middleware
@@ -175,7 +175,8 @@ export const trustedProxyMiddleware = (req: Request, res: Response, next: NextFu
 
     if (!trustedProxies.includes(req.ip || '')) {
       // Untrusted proxy - don't trust X-Forwarded-For
-      req.ip = req.socket.remoteAddress || 'unknown';
+      // Cast to any to avoid assigning to readonly property on Express's Request
+      (req as any).ip = req.socket.remoteAddress || 'unknown';
     }
   }
 

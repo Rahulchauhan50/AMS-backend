@@ -213,7 +213,4 @@ const systemSettingsSchema = new Schema<ISystemSettings>(
   baseSchemaOptions
 );
 
-// Index for efficient lookups
-systemSettingsSchema.index({ isDeleted: 1 }, { partialFilterExpression: { isDeleted: false } });
-
 export const SystemSettings = model<ISystemSettings>('SystemSettings', systemSettingsSchema);

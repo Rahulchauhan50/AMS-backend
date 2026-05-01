@@ -22,7 +22,6 @@ const compliancePolicySchema = new Schema<ICompliancePolicy>(
     name: {
       type: String,
       required: [true, 'Policy name is required'],
-      unique: true,
       trim: true,
     },
     description: {

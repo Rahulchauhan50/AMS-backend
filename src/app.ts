@@ -6,15 +6,26 @@ import morgan from 'morgan';
 import v1Routes from './routes/v1.routes';
 import { globalErrorHandler } from './middlewares/error.middleware';
 import { errorResponse } from './common/response/response.formatter';
+import {
+  sanitizeRequest,
+  securityHeaders,
+  generalRateLimiter,
+  trustedProxyMiddleware,
+  loginRateLimiter,
+} from './middlewares/security.middleware';
 
 const app: Application = express();
 
 // Global Middlewares
-app.use(helmet()); // Security headers
+app.use(helmet()); // Security headers (helmet provides many defaults)
+app.use(securityHeaders); // Our additional security headers
 app.use(cors()); // Enable CORS
 app.use(cookieParser()); // Cookie parser for refresh tokens
+app.use(trustedProxyMiddleware);
 app.use(express.json()); // JSON parser
 app.use(express.urlencoded({ extended: true })); // URL-encoded parser
+app.use(sanitizeRequest); // Request sanitization
+app.use(generalRateLimiter()); // Basic rate limiting
 app.use(morgan('dev')); // Request logger
 
 // Routes

@@ -27,7 +27,6 @@ const contractSchema = new Schema<IContract>(
     contractNumber: {
       type: String,
       required: [true, 'Contract number is required'],
-      unique: true,
       trim: true,
     },
     contractType: {
