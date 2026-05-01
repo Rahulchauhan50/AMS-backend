@@ -7,6 +7,11 @@ export interface IUser extends Document {
   passwordHash: string;
   status: 'active' | 'inactive';
   roles: string[];
+  failedLoginAttempts: number;
+  isLockedOut: boolean;
+  lockedOutUntil?: Date;
+  lastPasswordChangeAt?: Date;
+  passwordExpiresAt?: Date;
   isDeleted: boolean;
   createdAt: Date;
   updatedAt: Date;
@@ -38,6 +43,26 @@ const userSchema = new Schema<IUser>(
     roles: {
       type: [String],
       default: ['IT Supervisor'], // Default role
+    },
+    failedLoginAttempts: {
+      type: Number,
+      default: 0,
+      min: 0,
+    },
+    isLockedOut: {
+      type: Boolean,
+      default: false,
+      index: true,
+    },
+    lockedOutUntil: {
+      type: Date,
+      default: null,
+    },
+    lastPasswordChangeAt: {
+      type: Date,
+    },
+    passwordExpiresAt: {
+      type: Date,
     },
     ...baseSchemaFields,
   },

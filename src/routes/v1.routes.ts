@@ -21,6 +21,13 @@ import reservationRoutes from '../modules/reservations/reservation.routes';
 import trackingRoutes from '../modules/tracking/tracking.routes';
 import financeRoutes from '../modules/finance/finance.routes';
 import contractRoutes from '../modules/contracts/contract.routes';
+import complianceRoutes from '../modules/compliance/compliance.routes';
+import importRoutes from '../modules/imports/import.routes';
+import exportRoutes from '../modules/exports/export.routes';
+import reportRoutes from '../modules/reports/report.routes';
+import analyticsRoutes from '../modules/analytics/analytics.routes';
+import searchRoutes from '../modules/search/search.routes';
+import settingsRoutes from '../modules/settings/settings.routes';
 
 const router = Router();
 
@@ -99,5 +106,26 @@ router.use('/finance', financeRoutes);
 
 // Phase 30: Contract management
 router.use('/contracts', contractRoutes);
+
+// Phase 31: Compliance and audit management
+router.use('/compliance', complianceRoutes);
+
+// Phase 32: Asset import
+router.use('/imports', importRoutes);
+
+// Phase 33: Asset export
+router.use('/exports', exportRoutes);
+
+// Phase 34: Reporting engine
+router.use('/reports', reportRoutes);
+
+// Phase 35: Analytics dashboard APIs
+router.use('/analytics', analyticsRoutes);
+
+// Phase 36: Advanced global search
+router.use('/search', searchRoutes);
+
+// Phase 37: System settings
+router.use('/settings', settingsRoutes);
 
 export default router;

@@ -96,6 +96,20 @@ export enum ContractStatus {
   TERMINATED = 'TERMINATED',
 }
 
+export enum CompliancePolicySeverity {
+  LOW = 'LOW',
+  MEDIUM = 'MEDIUM',
+  HIGH = 'HIGH',
+  CRITICAL = 'CRITICAL',
+}
+
+export enum ComplianceCheckStatus {
+  PENDING = 'PENDING',
+  IN_PROGRESS = 'IN_PROGRESS',
+  COMPLETED = 'COMPLETED',
+  FAILED = 'FAILED',
+}
+
 export const LaptopCategoryCodes = [AssetCategoryCode.LAPTOP];
 
 export default {
@@ -112,4 +126,6 @@ export default {
   MaintenanceRequestPriority,
   ContractType,
   ContractStatus,
+  CompliancePolicySeverity,
+  ComplianceCheckStatus,
 };
