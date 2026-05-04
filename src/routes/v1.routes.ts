@@ -28,6 +28,7 @@ import reportRoutes from '../modules/reports/report.routes';
 import analyticsRoutes from '../modules/analytics/analytics.routes';
 import searchRoutes from '../modules/search/search.routes';
 import settingsRoutes from '../modules/settings/settings.routes';
+import adminRoutes from '../modules/admin/admin.routes';
 
 const router = Router();
 
@@ -127,5 +128,8 @@ router.use('/search', searchRoutes);
 
 // Phase 37: System settings
 router.use('/settings', settingsRoutes);
+
+// Phase 39: Observability and performance
+router.use('/admin', adminRoutes);
 
 export default router;

@@ -1,8 +1,11 @@
 import mongoose from 'mongoose';
 import { env } from './env';
+import { registerMongooseObservability } from '../common/observability/mongoose-observability';
 
 const MAX_RETRIES = 5;
 const RETRY_INTERVAL = 5000; // 5 seconds
+
+registerMongooseObservability();
 
 export const connectDB = async () => {
   let retries = 0;
