@@ -2,7 +2,6 @@ import express, { Application, Request, Response, NextFunction } from 'express';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import helmet from 'helmet';
-import morgan from 'morgan';
 import v1Routes from './routes/v1.routes';
 import { globalErrorHandler } from './middlewares/error.middleware';
 import { errorResponse } from './common/response/response.formatter';
@@ -13,6 +12,7 @@ import {
   trustedProxyMiddleware,
   loginRateLimiter,
 } from './middlewares/security.middleware';
+import { requestObservability } from './common/observability/observability.middleware';
 
 const app: Application = express();
 
@@ -26,7 +26,7 @@ app.use(express.json()); // JSON parser
 app.use(express.urlencoded({ extended: true })); // URL-encoded parser
 app.use(sanitizeRequest); // Request sanitization
 app.use(generalRateLimiter()); // Basic rate limiting
-app.use(morgan('dev')); // Request logger
+app.use(requestObservability); // Structured request logs and duration tracking
 
 // Routes
 app.use('/api/v1', v1Routes);
