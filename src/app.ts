@@ -39,4 +39,5 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 // Global Error Handler
 app.use(globalErrorHandler);
 
+// Export the app for use in server.ts
 export default app;
